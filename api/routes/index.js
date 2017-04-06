@@ -16,7 +16,7 @@ module.exports = function(app) {
   // --------------------------------------------------
   app.route('/').get(auth, function(req, res) {
 
-    res.render('index');
+    res.render('index', {user: req.user});
   });
 
   app.route('/login').get(function(req, res) {

@@ -14,17 +14,25 @@ module.exports = function(app) {
   // --------------------------------------------------
   // Home
   // --------------------------------------------------
-  app.route('/').get(function(req, res) {
+  app.route('/').get(auth, function(req, res) {
 
-    if (req.isAuthenticated()) res.render('index');
-    else res.render('login');
+    res.render('index');
   });
 
+  app.route('/login').get(function(req, res) {
+
+    res.render('login');
+  })
+  .post(passport.authenticate('login', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash : true
+  }));
 
   // --------------------------------------------------
   // La liste des routes spécifiques
   // --------------------------------------------------
-  //app.use('/auth', require('./auth'));
+  app.use('/auth', require('./auth'));
 
   return app;
 }

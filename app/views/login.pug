@@ -7,4 +7,15 @@ html
     meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no', name='viewport')
     //-link(rel='stylesheet', href='/css/app.css')
   body
+    h1 signin
+    form(action='/auth/signin', method='post')
+      input.form-control(type='text', placeholder='Username', name='username')
+      input.form-control(type='email', placeholder='Email', name='mail')
+      input.form-control(type='password', placeholder='Password' name="password")
+      button.btn.btn-primary.btn-block.btn-flat(type='submit') Sign In
+
     h1 login
+    form(action='/login', method='post')
+      input.form-control(type='email', placeholder='Email', name='mail', value='rouge@gm.com')
+      input.form-control(type='password', placeholder='Password' name="password", value="123")
+      button.btn.btn-primary.btn-block.btn-flat(type='submit') Log In

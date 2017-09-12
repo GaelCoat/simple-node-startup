@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
-var SALT_WORK_FACTOR = 10;
+var salt = 10;
 
 var UserSchema = new mongoose.Schema({
   mail:       { type: String, required: true, index: { unique: true } },
@@ -17,7 +17,7 @@ UserSchema.pre('save', function(next) {
   if (!user.isModified('password')) return next();
 
   // generate a salt
-  bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+  bcrypt.genSalt(salt, function(err, salt) {
     if (err) return next(err);
 
     // hash the password using our new salt

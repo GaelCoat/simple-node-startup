@@ -14,9 +14,15 @@ module.exports = function(app) {
   // --------------------------------------------------
   // Home
   // --------------------------------------------------
-  app.route('/').get(auth, function(req, res) {
+  app.route('/').get(function(req, res) {
 
-    res.render('index', {user: req.user});
+    console.log('helo');
+    res.render('index');
+  });
+
+  app.route('/handling').get(auth, function(req, res) {
+
+    res.render('handling', {user: req.user});
   });
 
   app.route('/login').get(function(req, res) {
@@ -24,7 +30,7 @@ module.exports = function(app) {
     res.render('login');
   })
   .post(passport.authenticate('login', {
-    successRedirect: '/',
+    successRedirect: '/handling',
     failureRedirect: '/login',
     failureFlash : true
   }));

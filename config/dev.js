@@ -11,7 +11,7 @@ var config = {
   },
   mongo: {
     api: {
-      host: "mongodb://jackiedewit:bitchpliz@ds060749.mlab.com:60749/ez-startup"
+      host: "mongodb://localhost/custom"
     }
   }
 }
